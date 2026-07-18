@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Riven — Web Designer & AI Automation Builder</title>
+<meta name="description" content="Riven builds websites, digital experiences, and AI automation systems that solve real business problems and help brands grow." />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        colors: { ink: '#0A0A0A', paper: '#FFFFFF' },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; }
+  .hero-name { letter-spacing: -0.04em; line-height: 0.9; }
+  .hero-img {
+    filter: contrast(1.03) saturate(1.03);
+    transform: scaleX(-1);
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, rgba(0,0,0,0.82) 88%, rgba(0,0,0,0.45) 94%, rgba(0,0,0,0.15) 98%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 80%, rgba(0,0,0,0.82) 88%, rgba(0,0,0,0.45) 94%, rgba(0,0,0,0.15) 98%, transparent 100%);
+  }
+  /* subtle scroll reveal — hidden state only applies when JS is running (no-JS shows content) */
+  .reveal { transition: opacity .7s ease, transform .7s ease; }
+  .js .reveal { opacity: 0; transform: translateY(22px); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  /* section offset so sticky header doesn't cover anchored sections */
+  section[id] { scroll-margin-top: 5rem; }
+  /* animated nav underline + scroll-spy active state */
+  .nav-link { position: relative; color: rgba(10,10,10,.6); transition: color .25s ease; }
+  .nav-link:hover, .nav-link.active { color: #0A0A0A; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 100%;
+    background: #0A0A0A; transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+</style>
+</head>
+<body class="bg-paper text-ink font-sans">
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#home" class="text-2xl font-extrabold tracking-tight">RIVEN</a>
+
+      <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#design" class="nav-link">Design</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="#contact" class="hidden sm:inline-flex items-center rounded-lg bg-ink text-paper text-sm font-semibold px-5 py-2.5 hover:bg-ink/85 transition-colors">
+        Let's Work Together
+      </a>
+
+      <!-- mobile menu button -->
+      <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+
+    <!-- mobile nav -->
+    <nav id="mobileNav" class="hidden md:hidden border-t border-black/5 bg-paper px-6 py-4 flex-col gap-4 text-sm font-medium">
+      <a href="#home" class="block py-1">Home</a>
+      <a href="#about" class="block py-1">About</a>
+      <a href="#projects" class="block py-1">Projects</a>
+      <a href="#design" class="block py-1">Design</a>
+      <a href="#process" class="block py-1">Process</a>
+      <a href="#contact" class="block py-1">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-6 lg:min-h-[560px] pt-6 lg:pt-10 pb-10 lg:pb-0">
+
+        <!-- Left: copy -->
+        <div class="order-2 lg:order-1 max-w-xl self-start lg:pt-6">
+          <p class="text-sm font-semibold tracking-[0.2em] text-ink/50 mb-4">HELLO, I'M</p>
+          <h1 class="hero-name font-black text-7xl sm:text-8xl lg:text-[8.5rem] mb-6">RIVEN</h1>
+          <p class="text-lg sm:text-xl font-semibold text-ink/90 mb-5">
+            Web Designer <span class="text-ink/30">•</span> Developer <span class="text-ink/30">•</span> AI Automation Builder
+          </p>
+          <p class="text-base text-ink/60 leading-relaxed mb-9 max-w-md">
+            I build websites, digital experiences, and AI automation systems that solve real business problems and help brands grow.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#projects" class="group inline-flex items-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-6 py-3.5 hover:bg-ink/85 transition-colors">
+              View My Works
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="assets/resume.pdf" download="Riven-Resume.pdf" class="group inline-flex items-center gap-2 rounded-lg border border-ink/20 text-ink text-sm font-semibold px-6 py-3.5 hover:border-ink hover:bg-ink/[0.03] transition-colors">
+              Download My Resume
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-y-0.5"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <a href="#about" class="inline-flex items-center gap-2 mt-12 text-xs font-semibold tracking-[0.2em] text-ink/40 hover:text-ink/70 transition-colors">
+            SCROLL DOWN
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg>
+          </a>
+        </div>
+
+        <!-- Right: photo -->
+        <div class="order-1 lg:order-2 relative overflow-hidden lg:self-stretch">
+          <img src="assets/hero.png" alt="Riven" class="hero-img w-64 sm:w-80 mx-auto object-contain lg:absolute lg:inset-0 lg:mx-0 lg:w-full lg:h-full lg:max-w-none lg:object-cover lg:object-[50%_58%] select-none pointer-events-none" draggable="false" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="bg-neutral-50 border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-4 gap-y-12 lg:gap-x-10">
+
+        <!-- About Me text -->
+        <div class="reveal lg:pr-6">
+          <p class="text-xs font-bold tracking-[0.22em] text-ink/40 mb-5">ABOUT ME</p>
+          <p class="text-[15px] text-ink/70 leading-relaxed mb-4">
+            I started out in design — then grew into web development and AI automation. Today I build complete digital systems, not just good-looking pages.
+          </p>
+          <p class="text-[15px] text-ink/70 leading-relaxed mb-8">
+            I help businesses and brands launch fast, modern websites and automate the busy-work behind them — so they save time, look credible, and focus on growth.
+          </p>
+          <a href="assets/resume.pdf" download="Riven-Resume.pdf" class="group inline-flex items-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-5 py-3 hover:bg-ink/85 transition-colors">
+            More About Me
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Skill column: Design -->
+        <div class="reveal lg:border-l lg:border-black/10 lg:pl-10" style="transition-delay:.05s">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mb-5 text-ink"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <h3 class="text-xs font-bold tracking-[0.2em] text-ink mb-5">DESIGN</h3>
+          <ul class="space-y-3 text-sm text-ink/65">
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Branding &amp; Identity</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>UI / UX Design</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Web Design</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Social Media Design</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Print &amp; Packaging</li>
+          </ul>
+        </div>
+
+        <!-- Skill column: Development -->
+        <div class="reveal lg:border-l lg:border-black/10 lg:pl-10" style="transition-delay:.1s">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mb-5 text-ink"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <h3 class="text-xs font-bold tracking-[0.2em] text-ink mb-5">DEVELOPMENT</h3>
+          <ul class="space-y-3 text-sm text-ink/65">
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>React / Next.js</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Tailwind CSS</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>JavaScript / TypeScript</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Supabase / Firebase</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Responsive Websites</li>
+          </ul>
+        </div>
+
+        <!-- Skill column: Automation -->
+        <div class="reveal lg:border-l lg:border-black/10 lg:pl-10" style="transition-delay:.15s">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mb-5 text-ink"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><path d="M9 13h.01"/><path d="M15 13h.01"/><path d="M9.5 16.5h5"/><path d="M2 13v2"/><path d="M22 13v2"/></svg>
+          <h3 class="text-xs font-bold tracking-[0.2em] text-ink mb-5">AUTOMATION</h3>
+          <ul class="space-y-3 text-sm text-ink/65">
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>AI Workflows</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Google Sheets Automation</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Business Systems</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Claude / AI Integration</li>
+            <li class="flex gap-2.5"><span class="mt-1.5 h-1 w-1 rounded-full bg-ink/40 shrink-0"></span>Lead Generation Bots</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED PROJECTS ================= -->
+  <section id="projects" class="border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+
+      <div class="mb-12 reveal">
+        <h2 class="text-xs font-bold tracking-[0.22em] text-ink/40">FEATURED PROJECTS</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+
+        <!-- Card: Wide Eleven -->
+        <div class="group reveal flex flex-col">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-5 ring-1 ring-black/5 bg-neutral-100">
+            <img src="assets/projects/wide-eleven.svg" alt="Wide Eleven thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          </div>
+          <h3 class="text-base font-bold text-ink">Wide Eleven</h3>
+          <p class="text-xs font-medium text-ink/45 mb-2.5">Brand &amp; Web Design</p>
+          <p class="text-sm text-ink/60 leading-relaxed mb-4">Complete brand identity and a fast, responsive marketing site designed to turn visitors into paying customers.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Branding</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Web Design</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Framer</span>
+          </div>
+          <a href="https://www.wide-eleven.com/" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-4 py-2.5 hover:bg-ink/85 transition-colors">
+            Visit Website
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Siam Voyage -->
+        <div class="group reveal flex flex-col" style="transition-delay:.05s">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-5 ring-1 ring-black/5 bg-neutral-100">
+            <img src="assets/projects/siam-voyage.svg" alt="Siam Voyage thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          </div>
+          <h3 class="text-base font-bold text-ink">Siam Voyage</h3>
+          <p class="text-xs font-medium text-ink/45 mb-2.5">Travel Booking Platform</p>
+          <p class="text-sm text-ink/60 leading-relaxed mb-4">Responsive travel booking platform with a package system, booking vouchers, QR verification and an admin dashboard.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">React</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Tailwind</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Automation</span>
+          </div>
+          <a href="https://siamvoyage.netlify.app/" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-4 py-2.5 hover:bg-ink/85 transition-colors">
+            Visit Website
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Sproutful -->
+        <div class="group reveal flex flex-col" style="transition-delay:.1s">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-5 ring-1 ring-black/5 bg-neutral-100">
+            <img src="assets/projects/sproutful.svg" alt="Sproutful thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          </div>
+          <h3 class="text-base font-bold text-ink">Sproutful</h3>
+          <p class="text-xs font-medium text-ink/45 mb-2.5">Web App &amp; Automation</p>
+          <p class="text-sm text-ink/60 leading-relaxed mb-4">A clean web app with automated workflows and Google Sheets integration that saves hours of manual work every week.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Next.js</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Sheets</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">AI</span>
+          </div>
+          <a href="https://sproutful.vercel.app/s/riven_fams255" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-4 py-2.5 hover:bg-ink/85 transition-colors">
+            Visit Website
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Scan & Say -->
+        <div class="group reveal flex flex-col" style="transition-delay:.15s">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-5 ring-1 ring-black/5 bg-neutral-100">
+            <img src="assets/projects/scan-and-say.svg" alt="Scan & Say thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          </div>
+          <h3 class="text-base font-bold text-ink">Scan &amp; Say</h3>
+          <p class="text-xs font-medium text-ink/45 mb-2.5">Review Aggregator</p>
+          <p class="text-sm text-ink/60 leading-relaxed mb-4">Collects and displays Google &amp; Facebook reviews in one place to build trust and boost conversions.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Next.js</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">API</span>
+            <span class="text-xs font-medium text-ink/70 bg-neutral-100 rounded-md px-2.5 py-1">Automation</span>
+          </div>
+          <a href="https://reviewtap.rivenwebdesign-aiautomation.workers.dev/get-review-link" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-4 py-2.5 hover:bg-ink/85 transition-colors">
+            Download APK · Android
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 21h14"/></svg>
+          </a>
+          <p class="text-[11px] leading-relaxed text-ink/40 mt-3">
+            For Android devices only. This APK contains no harmful code — some phones may still flag apps installed outside the Play Store as unknown or unsafe. Riven takes 100% responsibility for any effect this app has on your device.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SELECTED DESIGN WORKS ================= -->
+  <section id="design" class="bg-neutral-50 border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+
+      <div class="mb-12 reveal">
+        <h2 class="text-xs font-bold tracking-[0.22em] text-ink/40">SELECTED DESIGN WORKS</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-5">
+        <!-- Replace each design-N.svg in assets/design/ with your own work (keep names, or update src) -->
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100">
+          <img src="assets/design/design-1.svg" alt="Design work 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100" style="transition-delay:.05s">
+          <img src="assets/design/design-2.svg" alt="Design work 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100" style="transition-delay:.1s">
+          <img src="assets/design/design-3.svg" alt="Design work 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100" style="transition-delay:.15s">
+          <img src="assets/design/design-4.svg" alt="Design work 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100" style="transition-delay:.2s">
+          <img src="assets/design/design-5.svg" alt="Design work 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+        <div class="reveal group aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-black/5 bg-neutral-100" style="transition-delay:.25s">
+          <img src="assets/design/design-6.svg" alt="Design work 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MY PROCESS ================= -->
+  <section id="process" class="border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+
+      <div class="mb-14 reveal">
+        <h2 class="text-xs font-bold tracking-[0.22em] text-ink/40">MY PROCESS</h2>
+      </div>
+
+      <div class="relative">
+        <!-- connector line (desktop) -->
+        <div class="hidden lg:block absolute top-7 left-[10%] right-[10%] h-px bg-black/10"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 relative">
+
+          <!-- 01 Research -->
+          <div class="reveal">
+            <div class="relative z-10 h-14 w-14 rounded-full bg-paper border border-black/10 flex items-center justify-center mb-5 mx-auto lg:mx-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-ink"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <p class="text-xs font-bold tracking-[0.15em] text-ink/35 mb-1 text-center lg:text-left">01</p>
+            <h3 class="text-base font-bold text-ink mb-2 text-center lg:text-left">Research</h3>
+            <p class="text-sm text-ink/55 leading-relaxed text-center lg:text-left">Understand your goals, your audience and the real problem we're solving.</p>
+          </div>
+
+          <!-- 02 Strategy -->
+          <div class="reveal" style="transition-delay:.06s">
+            <div class="relative z-10 h-14 w-14 rounded-full bg-paper border border-black/10 flex items-center justify-center mb-5 mx-auto lg:mx-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-ink"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+            </div>
+            <p class="text-xs font-bold tracking-[0.15em] text-ink/35 mb-1 text-center lg:text-left">02</p>
+            <h3 class="text-base font-bold text-ink mb-2 text-center lg:text-left">Strategy</h3>
+            <p class="text-sm text-ink/55 leading-relaxed text-center lg:text-left">Map the best solution and set a clear, focused roadmap.</p>
+          </div>
+
+          <!-- 03 Design -->
+          <div class="reveal" style="transition-delay:.12s">
+            <div class="relative z-10 h-14 w-14 rounded-full bg-paper border border-black/10 flex items-center justify-center mb-5 mx-auto lg:mx-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-ink"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <p class="text-xs font-bold tracking-[0.15em] text-ink/35 mb-1 text-center lg:text-left">03</p>
+            <h3 class="text-base font-bold text-ink mb-2 text-center lg:text-left">Design</h3>
+            <p class="text-sm text-ink/55 leading-relaxed text-center lg:text-left">Craft clean, on-brand and user-friendly interfaces.</p>
+          </div>
+
+          <!-- 04 Build -->
+          <div class="reveal" style="transition-delay:.18s">
+            <div class="relative z-10 h-14 w-14 rounded-full bg-paper border border-black/10 flex items-center justify-center mb-5 mx-auto lg:mx-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-ink"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <p class="text-xs font-bold tracking-[0.15em] text-ink/35 mb-1 text-center lg:text-left">04</p>
+            <h3 class="text-base font-bold text-ink mb-2 text-center lg:text-left">Build</h3>
+            <p class="text-sm text-ink/55 leading-relaxed text-center lg:text-left">Develop fast, responsive and scalable websites &amp; systems.</p>
+          </div>
+
+          <!-- 05 Launch -->
+          <div class="reveal" style="transition-delay:.24s">
+            <div class="relative z-10 h-14 w-14 rounded-full bg-paper border border-black/10 flex items-center justify-center mb-5 mx-auto lg:mx-0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-ink"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </div>
+            <p class="text-xs font-bold tracking-[0.15em] text-ink/35 mb-1 text-center lg:text-left">05</p>
+            <h3 class="text-base font-bold text-ink mb-2 text-center lg:text-left">Launch</h3>
+            <p class="text-sm text-ink/55 leading-relaxed text-center lg:text-left">Test, deploy and optimize for real-world results and growth.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="bg-neutral-50 border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
+
+        <!-- Left: heading + CTA -->
+        <div class="reveal">
+          <p class="text-xs font-bold tracking-[0.22em] text-ink/40 mb-6">GET IN TOUCH</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.03] mb-6">
+            Let's build<br>something<br>great together.
+          </h2>
+          <p class="text-base text-ink/60 leading-relaxed mb-9 max-w-md">
+            Have a project, a product, or a process that needs building or automating? Let's talk — I reply fast.
+          </p>
+          <a href="mailto:rivenwebdesign.aiautomation@gmail.com" class="group inline-flex items-center gap-2 rounded-lg bg-ink text-paper text-sm font-semibold px-6 py-3.5 hover:bg-ink/85 transition-colors">
+            Contact Me
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Right: contact methods -->
+        <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-8" style="transition-delay:.1s">
+
+          <!-- Email -->
+          <a href="mailto:rivenwebdesign.aiautomation@gmail.com" class="group flex items-start gap-3.5">
+            <span class="shrink-0 h-11 w-11 rounded-lg bg-ink/[0.06] flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold text-ink">Email</span>
+              <span class="block text-sm text-ink/55 group-hover:text-ink/80 transition-colors break-all">rivenwebdesign.aiautomation@gmail.com</span>
+            </span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="#" target="_blank" rel="noopener" class="group flex items-start gap-3.5">
+            <span class="shrink-0 h-11 w-11 rounded-lg bg-ink/[0.06] flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.71h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.65 21 11.09 21 14.24V21h-4v-5.99c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold text-ink">LinkedIn</span>
+              <span class="block text-sm text-ink/55 group-hover:text-ink/80 transition-colors">Add your profile link</span>
+            </span>
+          </a>
+
+          <!-- Facebook -->
+          <a href="#" target="_blank" rel="noopener" class="group flex items-start gap-3.5">
+            <span class="shrink-0 h-11 w-11 rounded-lg bg-ink/[0.06] flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold text-ink">Facebook</span>
+              <span class="block text-sm text-ink/55 group-hover:text-ink/80 transition-colors">Add your page link</span>
+            </span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="#" target="_blank" rel="noopener" class="group flex items-start gap-3.5">
+            <span class="shrink-0 h-11 w-11 rounded-lg bg-ink/[0.06] flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-paper transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold text-ink">Instagram</span>
+              <span class="block text-sm text-ink/55 group-hover:text-ink/80 transition-colors">Add your profile link</span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="text-lg font-extrabold tracking-tight">RIVEN</span>
+      <p class="text-xs text-paper/50 order-3 sm:order-2">© 2026 Riven. All rights reserved.</p>
+      <p class="text-xs text-paper/50 order-2 sm:order-3">Designed &amp; Developed by Riven</p>
+    </div>
+  </footer>
+
+  <script>
+    // mark JS as running so the reveal hidden-state kicks in (no-JS keeps content visible)
+    document.documentElement.classList.add('js');
+
+    const reveals = [...document.querySelectorAll('.reveal')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const sections = [...document.querySelectorAll('section[id]')];
+
+    // reveal elements as they enter the viewport (scroll-based — reliable everywhere)
+    function revealCheck() {
+      const trigger = window.innerHeight * 0.88;
+      for (const el of reveals) {
+        if (!el.classList.contains('in') && el.getBoundingClientRect().top < trigger) {
+          el.classList.add('in');
+        }
+      }
+    }
+
+    // nav scroll-spy: highlight the last section whose top has passed the reading line
+    function spyCheck() {
+      const line = window.innerHeight * 0.35;
+      let currentId = sections.length ? sections[0].id : '';
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= line) currentId = s.id;
+      }
+      for (const l of navLinks) {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + currentId);
+      }
+    }
+
+    function onScroll() { revealCheck(); spyCheck(); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+    onScroll(); // initial pass so above-the-fold content shows immediately
+
+    // mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+      mobileNav.classList.toggle('flex');
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      mobileNav.classList.remove('flex');
+    }));
+  </script>
+
+</body>
+</html>
