@@ -47,7 +47,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero__actions { display: flex; flex-wrap: wrap; gap: .85rem; }
 /* Soft light separates the black jacket from the black background */
 .hero__visual { position: relative; width: 100%; max-width: 43rem; justify-self: end; background: radial-gradient(closest-side, rgba(255,255,255,.26), rgba(255,255,255,0)); }
-.hero__portrait { position: relative; display: block; width: 100%; height: auto; }
+.hero__portrait { position: relative; display: block; width: 100%; height: auto; -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%); mask-image: linear-gradient(to bottom, black 55%, transparent 100%); }
 
 /* Sections */
 .band { padding-block: clamp(3.5rem, 8vw, 7rem); }
