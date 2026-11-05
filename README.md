@@ -1,4 +1,6 @@
-# Riven — Portfolio
+# Riven portfolio
 
-Personal portfolio site for Riven (Web Designer, Developer & AI Automation Builder).
-Static single-page site (HTML + Tailwind). Deployed on Vercel.
+Personal portfolio for Riven (web designer, Bangkok). Built with Vite and React, pre-rendered to static HTML, deployed on Vercel.
+
+- Run locally: `npm install`, then `npm run dev`
+- Build: `npm run build` (output in `dist`)

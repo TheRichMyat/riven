@@ -1,0 +1,12 @@
+# https://riven-worldclass.vercel.app/robots.txt
+# Allow all crawlers to index everything
+
+User-agent: *
+Allow: /
+
+# Disallow common build / system paths
+Disallow: /server/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://riven-worldclass.vercel.app/sitemap.xml
