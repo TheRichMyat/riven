@@ -170,8 +170,14 @@ export default function HomePage() {
               <ul className="channels">
                 <li><span>WhatsApp</span><a href="https://wa.me/66950287983">+66 95 028 7983</a></li>
                 <li><span>Telegram</span><a href="https://t.me/Riven_Myat">@Riven_Myat</a></li>
-                <li><span>Facebook</span><a href="https://www.facebook.com/aungkmyattt">Riven Myat</a></li>
-                <li><span>Email</span><a href="mailto:aungkaungmyat.vuc2020@gmail.com">aungkaungmyat.vuc2020@gmail.com</a></li>
+                <li><span>Facebook</span><a href="https://www.facebook.com/aungkmyattt">Aung K. Myat</a></li>
+                <li>
+                  <span>Email</span>
+                  <div className="channels__stack">
+                    <a href="mailto:rivenwebdesign.aiautomation@gmail.com">rivenwebdesign.aiautomation@gmail.com</a>
+                    <a href="mailto:aungkaungmyat.vuc2020@gmail.com">aungkaungmyat.vuc2020@gmail.com</a>
+                  </div>
+                </li>
               </ul>
               <div className="line-qr">
                 <img src="/LineQR.jpg" alt="QR code to add Riven on LINE" width="104" height="104" loading="lazy" />
