@@ -8,8 +8,8 @@ const WORK = [
   {
     name: "Atelier JK&WA",
     kind: "Client project, Singapore",
-    url: "https://jkwa.netlify.app",
-    urlLabel: "Visit jkwa.netlify.app",
+    url: "https://www.atelier-wa.com",
+    urlLabel: "Visit www.atelier-wa.com",
     image: "/work/jkwa-site.jpg",
     alt: "Atelier JK&WA home page with a Japanese-inspired living room",
     text: "A portfolio website for a Japanese-inspired interior design and build firm. The client's team updates projects, hero images and company details from their own admin panel. I also wrote the admin guide and set up hosting and the domain.",
